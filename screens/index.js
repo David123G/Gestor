@@ -25,7 +25,7 @@ export default class login extends React.Component {
             user: [],
             usuario: '',
             password: '',
-            url: 'https://randomuser.me/api/?seed=1&page=1&results=5'
+            url: 'http://appgestorpersonalapi.azurewebsites.net/api/usuarios'
         }
     }
     componentDidMount() {
@@ -38,7 +38,7 @@ export default class login extends React.Component {
             .then(res => {
 
                 this.setState({
-                    user: res.results,
+                    user: res,
                     loading: false,
                 })
             })
@@ -99,7 +99,7 @@ export default class login extends React.Component {
     validation = () => {
         var estaDentro = false;
         for (var i = 0; i < this.state.user.length; i++) {
-            if (this.state.user[i].email == this.state.usuario && this.state.user[i].name.last == this.state.password) {
+            if (this.state.user[i].correo == this.state.usuario && this.state.user[i].contrasena == this.state.password) {
                 estaDentro = true;
             }
         }

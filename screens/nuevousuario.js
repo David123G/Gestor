@@ -9,7 +9,7 @@ import {
 import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
 
 
-export default class LinksScreen extends React.Component {
+export default class nuevousuario extends React.Component {
 
   constructor() {
     super();

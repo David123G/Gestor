@@ -10,7 +10,7 @@ export default class HomeScreen extends React.Component {
     this.state = {
       loading: false,
         user:[],
-        url: 'https://randomuser.me/api/?seed=1&page=1&results=5'
+        url: 'http://appgestorpersonalapi.azurewebsites.net/api/peticiones'
         
   }
 
@@ -31,7 +31,7 @@ getuser = () => {
   .then(res=>{
 
     this.setState({
-      user: res.results,
+      user: res,
       url: res.next,
       loading: false,
     })
@@ -58,13 +58,8 @@ render(){
                   data ={this.state.user}
                   renderItem={({item}) =>(
                       <View style={styles.item}>
-                          <Text style ={ styles.item}                          
-                             onPress={this.GetItem.bind(this, 
-                              'Nombre : '+item.name.first+ "\n" +
-                              'email :'+item.email+ "\n" 
-
-                             )}>
-                               {item.name.first}
+                          <Text style ={ styles.item}>
+                               {item.nombre}
                           </Text>
                       </View>
                   )}

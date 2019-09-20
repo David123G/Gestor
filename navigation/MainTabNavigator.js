@@ -8,6 +8,7 @@ import loginscreen from '../screens/index';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import nuevo_usuario from '../screens/nuevousuario';
 
 const config = Platform.select({
   web: { headerMode: 'screen' },
@@ -36,6 +37,28 @@ HomeStack.navigationOptions = {
 
 HomeStack.path = '';
 
+//////////////////////////////////////////////////////////////////////////////
+const nuevo = createStackNavigator(
+  {
+    NuevoUsuario: nuevo_usuario,
+  },
+  config
+);
+
+nuevo.navigationOptions = {
+  tabBarLabel: 'NuevoUsuario',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}` : 'md-information-circle'
+      }
+    />
+  ),
+};
+
+nuevo.path = '';
 //////////////////////////////////////////////////////////////////////////////
 const login = createStackNavigator(
   {
@@ -95,6 +118,7 @@ SettingsStack.path = '';
 
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
+  nuevo,
   login,
   LinksStack,
   SettingsStack,
