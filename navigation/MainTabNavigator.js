@@ -3,10 +3,9 @@ import { Platform } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator } from 'react-navigation';
 
 import TabBarIcon from '../components/TabBarIcon';
-import joda from '../screens/navegacion';
 import loginscreen from '../screens/index';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
+import NewUser from '../screens/NuevoPermiso';
 import SettingsScreen from '../screens/SettingsScreen';
 import nuevo_usuario from '../screens/nuevousuario';
 
@@ -68,7 +67,7 @@ const login = createStackNavigator(
 );
 
 login.navigationOptions = {
-  tabBarLabel: 'Home',
+  tabBarLabel: 'Historial',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
@@ -83,22 +82,28 @@ login.navigationOptions = {
 login
 login.path = '';
 
+///////////////////////////////////////////////////////////////////////////////////////
 
-const LinksStack = createStackNavigator(
+const NuevoUser = createStackNavigator(
   {
-    Links: LinksScreen,
+    Links: NewUser,
   },
   config
 );
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+NuevoUser.navigationOptions = {
+  tabBarLabel: 'Nuevo permiso',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'} />
   ),
 };
 
-LinksStack.path = '';
+NuevoUser.path = '';
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////
+
 
 const SettingsStack = createStackNavigator(
   {
@@ -108,7 +113,7 @@ const SettingsStack = createStackNavigator(
 );
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+  tabBarLabel: 'Nuevo usuario',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
   ),
@@ -116,11 +121,12 @@ SettingsStack.navigationOptions = {
 
 SettingsStack.path = '';
 
+///////////////////////////////////////////////////////////////////////////////////////
 const tabNavigator = createBottomTabNavigator({
   HomeStack,
   nuevo,
   login,
-  LinksStack,
+  NuevoUser,
   SettingsStack,
 });
 

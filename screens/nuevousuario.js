@@ -14,49 +14,54 @@ export default class nuevousuario extends React.Component {
   constructor() {
     super();
     this.state = {
-      motivo: '',
-      descripcion: '',
       nombre: '',
-      fecha: '',
-      estado: 'Activo'
+      apellido: '',
+      correo: '',
+      contrasena: '',
+      cargo: '',
+      peticiones: ''
 
     }
   }
 
   UpdateValue(text, field) {
-    if (field == 'motivo') {
-      this.setState({
-        motivo: text,
-      })
-    }
-    else if (field == 'descripcion') {
-      this.setState({
-        descripcion: text,
-      })
-    }
-    else if (field == 'nombre') {
+    if (field == 'nombre') {
       this.setState({
         nombre: text,
       })
     }
-    else if (field == 'fecha') {
+    else if (field == 'apellido') {
       this.setState({
-        fecha: text,
+        apellido: text,
+      })
+    }
+    else if (field == 'correo') {
+      this.setState({
+        correo: text,
+      })
+    }
+    else if (field == 'contrasena') {
+      this.setState({
+        contrasena: text,
+      })
+    }
+    else if (field == 'cargo') {
+      this.setState({
+        cargo: text,
       })
     }
   }
 
   submit() {
     let collection = {}
-      collection.usuarioId = 1,
-      collection.motivo = this.state.motivo,
-      collection.descripcion = this.state.descripcion,
       collection.nombre = this.state.nombre,
-      collection.fecha = this.state.fecha,
-      collection.estado = this.state.estado,
+      collection.apellido = this.state.apellido,
+      collection.correo = this.state.correo,
+      collection.contrasena = this.state.contrasena,
+      collection.cargo = this.state.cargo,
     console.warn(collection);
 
-    var url = 'http://appgestorpersonalapi.azurewebsites.net/api/peticiones';
+    var url = 'http://appgestorpersonalapi.azurewebsites.net/api/usuarios';
 
     fetch(url, {
       method: 'POST', // or 'PUT'
@@ -88,25 +93,30 @@ export default class nuevousuario extends React.Component {
           </View>
 
           <View style={styles.getStartedContainer}>
-            <TextInput style={styles.input} placeholder="Motivo"
-              onChangeText={(text) => this.UpdateValue(text, 'motivo')}>
-            </TextInput>
-          </View>
-          <View style={styles.getStartedContainer}>
-            <TextInput style={styles.input} placeholder="Descripcion"
-              onChangeText={(text) => this.UpdateValue(text, 'descripcion')}>
-            </TextInput>
-          </View>
-          <View style={styles.getStartedContainer}>
-            <TextInput style={styles.input} placeholder="nombre"
+            <TextInput style={styles.input} placeholder="Nombre"
               onChangeText={(text) => this.UpdateValue(text, 'nombre')}>
             </TextInput>
           </View>
           <View style={styles.getStartedContainer}>
-            <TextInput style={styles.input} placeholder="fecha"
-              onChangeText={(text) => this.UpdateValue(text, 'fecha')}>
+            <TextInput style={styles.input} placeholder="Apellido"
+              onChangeText={(text) => this.UpdateValue(text, 'apellido')}>
             </TextInput>
-          </View>          
+          </View>
+          <View style={styles.getStartedContainer}>
+            <TextInput style={styles.input} placeholder="Correo"
+              onChangeText={(text) => this.UpdateValue(text, 'correo')}>
+            </TextInput>
+          </View>
+          <View style={styles.getStartedContainer}>
+            <TextInput style={styles.input} placeholder="Contraseña"
+              onChangeText={(text) => this.UpdateValue(text, 'contrasena')}>
+            </TextInput>
+          </View>      
+          <View style={styles.getStartedContainer}>
+            <TextInput style={styles.input} placeholder="Cargo"
+              onChangeText={(text) => this.UpdateValue(text, 'cargo')}>
+            </TextInput>
+          </View>      
 
 
           <View>
@@ -125,8 +135,8 @@ export default class nuevousuario extends React.Component {
   }
 }
 
-LinksScreen.navigationOptions = {
-  title: 'Crear nuevo permiso',
+nuevousuario.navigationOptions = {
+  title: 'Crear nuevo Usuario',
 };
 
 const styles = StyleSheet.create({

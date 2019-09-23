@@ -9,7 +9,7 @@ import {
 import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
 
 
-export default class LinksScreen extends React.Component {
+export default class NewUser extends React.Component {
 
   constructor() {
     super();
@@ -48,7 +48,7 @@ export default class LinksScreen extends React.Component {
 
   submit() {
     let collection = {}
-      collection.usuarioId = 1,
+      collection.usuarioId = 1, /* este valor es quemado hay que cambiarlo */
       collection.motivo = this.state.motivo,
       collection.descripcion = this.state.descripcion,
       collection.nombre = this.state.nombre,
@@ -125,7 +125,7 @@ export default class LinksScreen extends React.Component {
   }
 }
 
-LinksScreen.navigationOptions = {
+NewUser.navigationOptions = {
   title: 'Crear nuevo permiso',
 };
 
