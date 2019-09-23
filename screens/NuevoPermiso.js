@@ -6,6 +6,7 @@ import {
   View,
   Text
 } from 'react-native';
+import DatePicker from 'react-native-datepicker'
 import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
 
 
@@ -17,7 +18,7 @@ export default class NewUser extends React.Component {
       motivo: '',
       descripcion: '',
       nombre: '',
-      fecha: '',
+      date:'',
       estado: 'Activo'
 
     }
@@ -39,22 +40,22 @@ export default class NewUser extends React.Component {
         nombre: text,
       })
     }
-    else if (field == 'fecha') {
+    else if (field == 'date') {
       this.setState({
-        fecha: text,
+        date: text,
       })
     }
   }
 
   submit() {
     let collection = {}
-      collection.usuarioId = 1, /* este valor es quemado hay que cambiarlo */
+    collection.usuarioId = 1, /* este valor es quemado hay que cambiarlo */
       collection.motivo = this.state.motivo,
       collection.descripcion = this.state.descripcion,
       collection.nombre = this.state.nombre,
-      collection.fecha = this.state.fecha,
+      collection.fecha = this.state.date,
       collection.estado = this.state.estado,
-    console.warn(collection);
+      console.warn(collection);
 
     var url = 'http://appgestorpersonalapi.azurewebsites.net/api/peticiones';
 
@@ -102,11 +103,39 @@ export default class NewUser extends React.Component {
               onChangeText={(text) => this.UpdateValue(text, 'nombre')}>
             </TextInput>
           </View>
-          <View style={styles.getStartedContainer}>
+          {/* <View style={styles.getStartedContainer}>
             <TextInput style={styles.input} placeholder="fecha"
               onChangeText={(text) => this.UpdateValue(text, 'fecha')}>
             </TextInput>
-          </View>          
+          </View> */}
+
+          <View style={styles.getStartedContainer}>
+            <DatePicker
+              style={{ width: 200 }}
+              date={this.state.date}
+              mode="date"
+              placeholder="Seleccione su fecha"
+              format="YYYY-MM-DD"
+              minDate="2016-05-01"
+              maxDate="2030-06-01"
+              confirmBtnText="Confirm"
+              cancelBtnText="Cancel"
+              customStyles={{
+                dateIcon: {
+                  position: 'absolute',
+                  left: 0,
+                  top: 4,
+                  marginLeft: 0
+                },
+                dateInput: {
+                  marginLeft: 36
+                }
+                // ... You can check the source to find the other keys.
+              }}
+              onDateChange={(text) =>  this.UpdateValue( text, 'date' )}
+            />
+          </View>
+
 
 
           <View>
