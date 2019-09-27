@@ -72,6 +72,7 @@ export default class nuevousuario extends React.Component {
     }).then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => console.log('Success:', response));
+      this.props.navigation.navigate('inicio');
   }
 
   render() {

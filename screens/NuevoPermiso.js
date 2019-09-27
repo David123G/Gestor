@@ -6,7 +6,7 @@ import {
   View,
   Text
 } from 'react-native';
-import DatePicker from 'react-native-datepicker'
+import DatePicker from 'react-native-datepicker';
 import { TextInput, TouchableHighlight } from 'react-native-gesture-handler';
 
 
@@ -54,8 +54,7 @@ export default class NewUser extends React.Component {
       collection.descripcion = this.state.descripcion,
       collection.nombre = this.state.nombre,
       collection.fecha = this.state.date,
-      collection.estado = this.state.estado,
-      console.warn(collection);
+      collection.estado = this.state.estado
 
     var url = 'http://appgestorpersonalapi.azurewebsites.net/api/peticiones';
 
@@ -68,6 +67,8 @@ export default class NewUser extends React.Component {
     }).then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => console.log('Success:', response));
+
+      this.props.navigation.navigate('Home');
   }
 
   render() {
@@ -89,16 +90,19 @@ export default class NewUser extends React.Component {
           </View>
 
           <View style={styles.getStartedContainer}>
+          <Image style={styles.inputIcon} source={{ uri: 'https://cdn.pixabay.com/photo/2016/10/06/19/02/clipboard-1719736_960_720.png' }} />
             <TextInput style={styles.input} placeholder="Motivo"
               onChangeText={(text) => this.UpdateValue(text, 'motivo')}>
             </TextInput>
           </View>
           <View style={styles.getStartedContainer}>
+          <Image style={styles.inputIcon} source={{ uri: 'https://cdn.pixabay.com/photo/2016/10/06/19/02/clipboard-1719736_960_720.png' }} />
             <TextInput style={styles.input} placeholder="Descripcion"
               onChangeText={(text) => this.UpdateValue(text, 'descripcion')}>
             </TextInput>
           </View>
           <View style={styles.getStartedContainer}>
+          <Image style={styles.inputIcon} source={{ uri: 'https://cdn.pixabay.com/photo/2016/10/06/19/02/clipboard-1719736_960_720.png' }} />
             <TextInput style={styles.input} placeholder="nombre"
               onChangeText={(text) => this.UpdateValue(text, 'nombre')}>
             </TextInput>
@@ -111,7 +115,7 @@ export default class NewUser extends React.Component {
 
           <View style={styles.getStartedContainer}>
             <DatePicker
-              style={{ width: 200 }}
+              style={{ width: 450,alignItems: 'center' }}
               date={this.state.date}
               mode="date"
               placeholder="Seleccione su fecha"
@@ -194,12 +198,12 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     width: 410,
     height: 45,
-    margin: 35,
+    margin: -35,
     flexDirection: 'row',
     borderBottomColor: '#000000'
 
 
-  },
+},
   motivo: {
     alignItems: 'center',
     backgroundColor: '#FFFFFF',
@@ -215,7 +219,7 @@ const styles = StyleSheet.create({
     margin: 15,
     marginRight: 50,
     justifyContent: 'center'
-  },
+},
   buttonContainer: {
     flexDirection: 'row',
     justifyContent: 'center',

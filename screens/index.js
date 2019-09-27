@@ -8,10 +8,10 @@ import {
     Select,
     Option
 } from 'react-native';
-import HomeScreen from './HomeScreen'
+
 
 import { TextInput, TouchableHighlight, FlatList } from 'react-native-gesture-handler';
-import { AppContainer } from './navegacion';
+import PasswordInputText from 'react-native-hide-show-password-input';
 
 export default class login extends React.Component {
 
@@ -21,7 +21,7 @@ export default class login extends React.Component {
 
         this.state = {
             loading: false,
-            
+
             user: [],
             usuario: '',
             password: '',
@@ -63,7 +63,7 @@ export default class login extends React.Component {
                     </View>
 
                     <View style={styles.getStartedContainer}>
-                        <Image style={styles.inputIcon} source={{ uri: 'https://image.flaticon.com/icons/png/512/59/59965.png' }} />
+                        {/* <Image style={styles.inputIcon} source={{ uri: 'https://image.flaticon.com/icons/png/512/59/59965.png' }} /> */}
                         <TextInput style={styles.input} placeholder="User"
                             onChangeText={(usuario) => this.setState({ usuario })}
                             value={this.state.usuario}>
@@ -71,15 +71,15 @@ export default class login extends React.Component {
                         </TextInput>
                     </View>
 
-                    <View style={styles.getStartedContainer}>
+                    <View style={{margin: 20}}>
 
-                        <Image style={styles.inputIcon} source={{ uri: 'https://image.flaticon.com/icons/png/512/69/69905.png' }} />
-                        <TextInput style={styles.input} placeholder="Password"
+                        {/* <Image style={styles.inputIcon} source={{ uri: 'https://image.flaticon.com/icons/png/512/69/69905.png' }} /> */}
+                        <PasswordInputText
+                            value={this.state.password}
                             onChangeText={(password) => this.setState({ password })}
-                            value={this.state.password}>
-                        </TextInput>
+                        />
                     </View>
-                  
+
 
                     <View>
                         <TouchableHighlight style={[styles.buttonContainer, styles.loginButton]} placeholder="Login" onPress={this.validation}>
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         borderBottomWidth: 1,
         width: 250,
-        height: 45,
+        height: 10,
         marginBottom: 20,
         flexDirection: 'row',
         alignItems: 'center'
@@ -150,10 +150,9 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         width: 410,
         height: 45,
-        margin: -35,
+        margin: 35,
         flexDirection: 'row',
         borderBottomColor: '#000000'
-
 
     },
     inputIcon: {
